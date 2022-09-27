@@ -36,6 +36,7 @@ class MessageController extends ModelControllerBase
 
         $query = $thread->thread_messages()->getQuery();
 
+        // If request has search attribute, do a simple wildcard search.
         if ($this->request->has('search')) {
             $query->where('body', 'like', '%' . $this->request->get('search') . '%');
         }
