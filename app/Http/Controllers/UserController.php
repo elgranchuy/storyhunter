@@ -28,6 +28,7 @@ class UserController extends ModelControllerBase
         $model = parent::show($id);
         $user = $this->request->user();
 
+        // If user email is different from user's request email, hide the attribute
         if ($model->email != $user->email)
         {
             $model->makeHidden('email');

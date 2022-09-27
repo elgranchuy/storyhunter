@@ -22,6 +22,12 @@ class TagController extends ModelControllerBase
         return $this->getModelQuery()->get();
     }
 
+    /**
+     * Return a threads collection associated with the specified tag
+     *
+     * @param string $id
+     * @return Collection
+     */
     public function threads(string $id): Collection
     {
         /** @var Tag $tag */

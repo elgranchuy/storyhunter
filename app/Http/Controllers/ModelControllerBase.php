@@ -26,6 +26,7 @@ abstract class ModelControllerBase extends Controller
      */
     public function store(): Model
     {
+        // Validate request body is not empty
         if (empty($this->request->except('_token'))) {
             throw new HttpException(ResponseAlias::HTTP_BAD_REQUEST, 'POST Request is empty!');
         }
@@ -38,6 +39,7 @@ abstract class ModelControllerBase extends Controller
 
         $model = $this->getModelQuery()->create($this->request->request->all());
 
+        // If models was not saved throw exception
         if (!$model->exists) {
             throw new ModelSaveException($model);
         }
