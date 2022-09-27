@@ -24,7 +24,6 @@ Route::post('/login', [RegisterController::class, 'login']);
 // Add routes for user endpoints
 Route::middleware(['auth:api'])->controller(UserController::class)->group(function () {
     Route::get('/users/{id}', 'show');
-    Route::post('/users', 'store');
 });
 
 // Add routes for thread endpoints
