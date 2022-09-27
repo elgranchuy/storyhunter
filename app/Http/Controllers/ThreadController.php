@@ -33,6 +33,19 @@ class ThreadController extends ModelControllerBase
         /** @var User $user */
         $user = User::findOrFail($id);
 
-        return $user->threads;
+        return $user->threads->load('tags');
+    }
+
+    public function update(string $id): Model
+    {
+        $thread = Thread::findOrFail($id);
+
+        if ($this->request->has('tag_ids'))
+        {
+            $tags = $this->request->get('tag_ids');
+            $thread->tags()->attach($tags);
+        }
+
+        return $thread->load('tags');
     }
 }
