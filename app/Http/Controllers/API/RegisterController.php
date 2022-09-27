@@ -27,7 +27,7 @@ class RegisterController
         ]);
 
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());
+            return $this->sendError('Validation Error.', $validator->errors()->getMessages());
         }
 
         $input = $request->all();
