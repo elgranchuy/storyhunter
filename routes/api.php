@@ -43,5 +43,6 @@ Route::middleware(['auth:api'])->controller(MessageController::class)->group(fun
 // Add routes for tag endpoints
 Route::middleware(['auth:api'])->controller(TagController::class)->group(function () {
     Route::get('/tags', 'index');
+    Route::get('/tags/{id}', 'threads');
     Route::post('/tags', 'store');
 });

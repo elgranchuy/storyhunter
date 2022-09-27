@@ -21,4 +21,12 @@ class TagController extends ModelControllerBase
     {
         return $this->getModelQuery()->get();
     }
+
+    public function threads(string $id): Collection
+    {
+        /** @var Tag $tag */
+        $tag = Tag::findOrFail($id);
+
+        return $tag->thread;
+    }
 }
